@@ -43,6 +43,13 @@ const STATUS_STYLES = {
     label: "text-amber-700 font-semibold",
     desc: "text-amber-600",
   },
+  disputed: {
+    dot: "bg-rose-500 ring-rose-100 animate-pulse",
+    line: "bg-rose-500",
+    icon: "text-white",
+    label: "text-rose-700 font-semibold",
+    desc: "text-rose-500",
+  },
   upcoming: {
     dot: "bg-gray-200 ring-gray-100",
     line: "bg-gray-200",
@@ -88,6 +95,11 @@ function TimelineStep({ stage, isLast }) {
           {stage.status === "delayed" && (
             <span className="inline-flex items-center gap-1 ml-1.5 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-amber-100 text-amber-700 rounded">
               <AlertTriangle size={10} /> Delayed
+            </span>
+          )}
+          {stage.status === "disputed" && (
+            <span className="inline-flex items-center gap-1 ml-1.5 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-rose-100 text-rose-700 rounded">
+              <AlertTriangle size={10} /> Disputed
             </span>
           )}
         </p>
