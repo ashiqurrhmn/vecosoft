@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# VecoSoft — Order Tracking UI
+
+A mobile-first **Order Tracking** screen built as a frontend assessment.  
+The application handles three real-world delivery situations through a single, consistent product experience.
+
+🔗 **Live Demo:** [vecosoft.vercel.app](https://vecosoft.vercel.app)
+
+## Supported States
+
+| State | URL | Description |
+|---|---|---|
+| Delayed Order | `?state=delayed` | Delivery is running behind schedule |
+| Delivered but Not Received | `?state=delivered-not-received` | Carrier says delivered, customer disagrees |
+| Tracking Not Available | `?state=tracking-not-available` | Order confirmed, tracking info pending |
+
+## Tech Stack
+
+- **Next.js 16** (App Router)
+- **React 19**
+- **Tailwind CSS 4**
+- **JavaScript / JSX** (no TypeScript)
+- **lucide-react** for icons
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- **Node.js** ≥ 18
+- **npm** ≥ 9
+
+### Install & Run
 
 ```bash
+# Clone the repository
+git clone https://github.com/ashiqurrhmn/vecosoft.git
+cd vecosoft
+
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) — the root page redirects to `/order-tracking`.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── layout.js                  # Root layout
+│   ├── page.js                    # Redirects to /order-tracking
+│   ├── globals.css                # Global styles & animations
+│   └── order-tracking/
+│       └── page.js                # State router (reads ?state= param)
+│
+├── components/order-tracking/
+│   ├── shared/                    # Reusable across all states
+│   │   ├── OrderHeader.jsx
+│   │   ├── DeliveryTimeline.jsx
+│   │   ├── OrderSummary.jsx
+│   │   ├── SupportActions.jsx
+│   │   └── OrderDetailsModal.jsx
+│   │
+│   ├── delayed/                   # Delayed order state
+│   │   ├── DelayedOrderView.jsx
+│   │   ├── DelayedStatusCard.jsx
+│   │   └── DelayedActions.jsx
+│   │
+│   ├── delivered-not-received/    # Delivered but not received state
+│   │   ├── DeliveredNotReceivedView.jsx
+│   │   ├── MissingDeliveryCard.jsx
+│   │   └── MissingDeliveryModal.jsx
+│   │
+│   └── tracking-not-available/    # Tracking not available state
+│       ├── TrackingNotAvailableView.jsx
+│       ├── TrackingPendingCard.jsx
+│       └── TrackingHelpCard.jsx
+│
+└── data/
+    └── orderTrackingData.js       # Mock data for all states
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Switching States
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+For easier understanding and review, **three toggle buttons** are displayed at the top of the order tracking screen:
 
-## Deploy on Vercel
+- **Delayed Order**
+- **Delivered but Not Received**
+- **Tracking Not Available**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Clicking any button instantly switches the UI to that situation — the active button is highlighted. This allows reviewers to see how the same product experience adapts to each real-world scenario without manually editing the URL.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+You can also navigate directly:
+
+- [Delayed Order](https://vecosoft.vercel.app/order-tracking?state=delayed)
+- [Delivered but Not Received](https://vecosoft.vercel.app/order-tracking?state=delivered-not-received)
+- [Tracking Not Available](https://vecosoft.vercel.app/order-tracking?state=tracking-not-available)
