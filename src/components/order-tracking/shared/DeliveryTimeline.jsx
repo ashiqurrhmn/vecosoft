@@ -6,6 +6,9 @@ import {
   MapPin,
   CircleCheckBig,
   AlertTriangle,
+  ShoppingBag,
+  PackageOpen,
+  ScanSearch,
 } from "lucide-react";
 
 /**
@@ -16,6 +19,9 @@ const STAGE_ICONS = {
   shipped: Truck,
   "out-for-delivery": MapPin,
   delivered: CircleCheckBig,
+  "order-placed": ShoppingBag,
+  preparing: PackageOpen,
+  "tracking-soon": ScanSearch,
 };
 
 /**

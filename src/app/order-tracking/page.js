@@ -6,10 +6,12 @@ import { getOrderByState } from "@/data/orderTrackingData";
 import OrderHeader from "@/components/order-tracking/shared/OrderHeader";
 import DelayedOrderView from "@/components/order-tracking/delayed/DelayedOrderView";
 import DeliveredNotReceivedView from "@/components/order-tracking/delivered-not-received/DeliveredNotReceivedView";
+import TrackingNotAvailableView from "@/components/order-tracking/tracking-not-available/TrackingNotAvailableView";
 
 const STATES = [
   { key: "delayed", label: "Delayed Order" },
   { key: "delivered-not-received", label: "Delivered but Not Received" },
+  { key: "tracking-not-available", label: "Tracking Not Available" },
 ];
 
 /**
@@ -39,9 +41,8 @@ function OrderTrackingContent() {
       case "delivered-not-received":
         return <DeliveredNotReceivedView order={order} />;
 
-      // Future state:
-      // case "tracking-unavailable":
-      //   return <TrackingUnavailableView order={order} />;
+      case "tracking-not-available":
+        return <TrackingNotAvailableView order={order} />;
 
       default:
         return (
@@ -85,7 +86,8 @@ function OrderTrackingContent() {
 /**
  * Order Tracking page.
  *
- * Supports states via query param: ?state=delayed | ?state=delivered-not-received
+ * Supports states via query param:
+ *   ?state=delayed | ?state=delivered-not-received | ?state=tracking-not-available
  * Defaults to "delayed" when no param is provided.
  */
 export default function OrderTrackingPage() {

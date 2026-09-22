@@ -120,6 +120,42 @@ const stateConfigs = {
       },
     ],
   },
+
+  "tracking-not-available": {
+    state: "tracking-not-available",
+    ...baseOrder,
+
+    delivery: {
+      estimatedDelivery: "September 25–27, 2026",
+      carrier: "Pending assignment",
+      trackingNumber: null,
+      shippingAddress: "42 Maple Drive, Apt 7B, Brooklyn, NY 11201",
+    },
+
+    timeline: [
+      {
+        id: "order-placed",
+        label: "Order Placed",
+        description: "Order confirmed & payment verified",
+        date: "Sep 18, 10:24 AM",
+        status: "completed",
+      },
+      {
+        id: "preparing",
+        label: "Preparing Your Order",
+        description: "Packing & getting ready for shipment",
+        date: "",
+        status: "current",
+      },
+      {
+        id: "tracking-soon",
+        label: "Tracking Available Soon",
+        description: "Details appear once carrier receives the package",
+        date: "",
+        status: "upcoming",
+      },
+    ],
+  },
 };
 
 /**
